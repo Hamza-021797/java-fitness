@@ -1,0 +1,17 @@
+server.port: 8080
+app.cors.allowed-origins: http://localhost:5173
+spring:
+  security.oauth2.resourceserver.jwt.issuer-uri: http://localhost:8180/realms/fitness
+  cloud.gateway.routes:
+    - id: user-service
+      uri: lb://user-service
+      predicates:
+        - Path=/api/users/**,/api/admin/**
+    - id: activity-service
+      uri: lb://activity-service
+      predicates:
+        - Path=/api/activities/**
+    - id: ai-service
+      uri: lb://ai-service
+      predicates:
+        - Path=/api/recommendations/**

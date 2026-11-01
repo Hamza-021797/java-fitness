@@ -1,0 +1,7 @@
+spring:
+  application.name: activity-service
+  config.import: configserver:http://${CONFIG_SERVER_HOST:localhost}:8888
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/fitness_activity}
+    username: ${DB_USER:fitness}
+    password: ${DB_PASSWORD:fitness}

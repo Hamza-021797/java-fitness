@@ -1,0 +1,41 @@
+{
+  "realm": "fitness",
+  "enabled": true,
+  "sslRequired": "none",
+  "registrationAllowed": true,
+  "loginWithEmailAllowed": true,
+  "roles": { "realm": [ { "name": "USER" }, { "name": "ADMIN" } ] },
+  "defaultRole": {
+    "name": "default-roles-fitness",
+    "description": "Default roles",
+    "composite": true,
+    "composites": { "realm": ["offline_access", "uma_authorization", "USER"] },
+    "clientRole": false
+  },
+  "clients": [
+    {
+      "clientId": "fitness-frontend",
+      "enabled": true,
+      "publicClient": true,
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": true,
+      "redirectUris": ["http://localhost:5173/*"],
+      "webOrigins": ["+"],
+      "attributes": { "pkce.code.challenge.method": "S256" }
+    }
+  ],
+  "users": [
+    {
+      "username": "demo", "enabled": true, "email": "demo@example.com", "emailVerified": true,
+      "firstName": "Demo", "lastName": "User",
+      "credentials": [ { "type": "password", "value": "demo123", "temporary": false } ],
+      "realmRoles": ["USER"]
+    },
+    {
+      "username": "admin", "enabled": true, "email": "admin@example.com", "emailVerified": true,
+      "firstName": "Admin", "lastName": "User",
+      "credentials": [ { "type": "password", "value": "admin123", "temporary": false } ],
+      "realmRoles": ["USER", "ADMIN"]
+    }
+  ]
+}

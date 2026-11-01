@@ -1,0 +1,4 @@
+server.port: 8083
+spring.jpa.hibernate.ddl-auto: update
+gemini:
+  model: gemini-2.5-flash
